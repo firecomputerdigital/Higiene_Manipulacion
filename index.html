@@ -1,35 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Solicitud de Inscripción a Curso</title>
+    <title>Solicitud de Inscripción</title>
 
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/font-awesome.css">
-  <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+
+    <style>
+        /* Contenedor del aviso de rotación */
+        #aviso-rotar {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: #ffffff;
+            z-index: 10000;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Estilo para el parpadeo */
+        .parpadeo {
+            animation: efecto-parpadeo 1.2s infinite;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffcc00; /* Color llamativo */
+        }
+
+        @keyframes efecto-parpadeo {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Detección de orientación vertical en dispositivos móviles */
+        @media only screen and (max-width: 800px) and (orientation: portrait) {
+            #aviso-rotar {
+                display: flex;
+            }
+            /* Ocultamos el formulario para forzar la rotación */
+            .form_wrap {
+                display: none;
+            }
+        }
+    </style>
 
 </head>
 <body>
+
+    <div id="aviso-rotar">
+        <span class="fa fa-mobile" style="font-size: 80px; margin-bottom: 20px; transform: rotate(90deg);"></span>
+        <p class="parpadeo">Por favor, gire su Smartphone en posición horizontal</p>
+        <p style="font-size: 0.9rem; margin-top: 10px;">Para una mejor visualización del formulario</p>
+    </div>
 
     <section class="form_wrap">
 
         <section class="cantact_info">
             <section class="info_title">
                 <span class="fa fa-user-circle"></span>
-                <h2>SOLICITUD<br>DE INSCRIPCIÓN<br>A CURSO CVG</h2>
+                <h2>SOLICITUD<br>DE INSCRIPCIÓN<br>A CURSO - CVG CBL<br> CAPACITACIÓN</h2>
             </section>
             <section class="info_items">
-                <p><span class="fa fa-envelope"></span> info.contact@gmail.com</p>
-                <p><span class="fa fa-mobile"></span> +(58) 416-6850122</p>                
-                <marquee>Coloque su Smartphone en posición horizontal, por favor</marquee>
+                <p><span class="fa fa-envelope"></span> > info.contact@gmail.com</p>
+                <p><span class="fa fa-mobile"></span> +(58) 416-6850122</p>
             </section>
         </section>
 
-  <form class="form_contact">
-            <h2>Solicitar Inscripción a Curso CVG </h2>
+        <form class="form_contact">
+            <h2>Solicitud de Inscripción a Curso - Capacitación</h2>
             <div class="user_info">
                 <label for="ci">Cédula *</label>
                 <input type="text" id="ci">
@@ -42,22 +93,19 @@
                 <label for="email">Correo electronico *</label>
                 <input type="text" id="email">
 
-                <label for="email">Curso *</label>
-                <input type="text" value ="HIGIENE Y MANIPULACIÓN DE ALIMENTOS" id="asunto" readonly>
-
+                <label for="asunto">Curso *</label>
+                <input type="text" value="HIGIENE Y MANIPULACIÓN DE ALIMENTOS" id="asunto" readonly>
 
                 <label for="mensaje">Mensaje *</label>
                 <textarea id="mensaje"></textarea>
                 <p><span >Nota: Favor llevar a la Oficina copia de cédula de identidad para formalizar inscripción. Gracias</span> </p>
 
-                <input type="button" value="Enviar Mensaje"  id="send">
+                <input type="button" value="Enviar Mensaje" id="send">
             </div>
-     </form>
+        </form>
 
     </section>
 
-</body>
-
     <script src="script.js"></script>
-
+</body>
 </html>
